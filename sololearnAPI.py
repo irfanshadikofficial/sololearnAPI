@@ -2,7 +2,16 @@
 from urllib.request import urlopen
 import json
 url = 'https://api.sololearn.repl.co/profile/'
-profileid = int(input('Enter User ID (Exp : 20098177) :'))
+#-------------------------------------version2.0
+profile_id = str(input('Paste The Url or Userid :'))
+print('Fetching Data ...')
+print('Wait a bit... processing...')
+if len(profile_id) > 7:
+	split_id = profile_id[-8:-1]
+else:
+	split_id = profile_id
+#-------------------------------------version2.0
+profileid = split_id
 link = f'{url}{profileid}'
 resp = urlopen(link)
 data = json.loads(resp.read())
