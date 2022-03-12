@@ -1,17 +1,23 @@
+#This will determine the UserID of the dedicated user :) - version3.0.4
+profile_id = str(input('Paste the url of the profile or the UserID :'))
+u_id = ''
+print('Fetching Data From Server ...')
+print('Wait Patiently ... ')
+if len(profile_id) == 7:
+    print(profile_id)
+elif    len(profile_id) == 43:
+        u_id = profile_id[-9:-1]
+elif    len(profile_id) == 42:
+        u_id = profile_id[-8:]
+else:
+    u_id = profile_id[34:]
+#The Final Variable for UserID is [u_id]
 #--------------------------------------Retrive Data From URI
 from urllib.request import urlopen
 import json
 url = 'https://api.sololearn.repl.co/profile/'
-#-------------------------------------version2.0
-profile_id = str(input('Paste The Url or Userid :'))
-print('Fetching Data ...')
-print('Wait a bit... processing...')
-if len(profile_id) > 7:
-	split_id = profile_id[-8:-1]
-else:
-	split_id = profile_id
-#-------------------------------------version2.0
-profileid = split_id
+#-------------------------------------version3.0.4
+profileid = u_id
 link = f'{url}{profileid}'
 resp = urlopen(link)
 data = json.loads(resp.read())
